@@ -26,7 +26,7 @@
 <!-- Short Description -->
 <p>
     <font size="+1">
-        Hello there! Thanks for visiting this repository. This is a place where you can find all the lab-task of the Web Technology course, of the <h3>American International University [Spring-2023]</h3>. <br/>
+        Hello there! Thanks for visiting this repository. This is a place where you can find all the lab-task of the Web Technology course, of the <h3>American International University [Spring-2023]</h3> <br/>
         4 languages are used in this repository. Those are <br/>
         <ul>
             <li>HTML</li>
@@ -59,13 +59,18 @@ git clone https://github.com/yaarian-om/W_E_B-T_E_C_H
 
 <!-- Download -->
 - Download
-  -  To download manually, press download from Code, showing below
+  -  To download manually, press download from Code, showing below:
 <p align="center">
     <img src="https://raw.githubusercontent.com/yaarian-om/SERVER/main/1010110010/W_E_B-T_E_C_H/download.gif" alt="DARK-CHEMBER Manual Download" width="50%" height="250"/>
 </p>
 
 
-
+<!-- Short Description -->
+<p>
+    <font size="+1">
+       Go ahead and explore the repository. Hope you would be enjoyed those.<br/>
+    </font>
+</p>
 
 
 
