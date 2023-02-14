@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- This line is used to redirect from the index.html page to another page who  -->
-    <meta http-equiv="refresh" content="0.1; url = Labtask Homepage.php" />
-    <title>Redirecting</title>
+    <title>W E B T E C H</title>
 </head>
 
 <body>
+    <p>
+    <h1 align="center">WELCOME !!</h1>
+    <h3 align="center">AIUB LabTask Spring 22-23</h3>
+    </p>
 
 </body>
 
