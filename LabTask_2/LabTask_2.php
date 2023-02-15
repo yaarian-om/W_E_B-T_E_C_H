@@ -9,10 +9,14 @@
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = $_POST['name'];
-        if (empty($name) || $name === " ") {
+        $wordCount = str_word_count($name);
+        // echo $wordCount;
+        if (empty($name)) {
             $nameError = "Name is required";
             // echo $nameError;
-        } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+        } elseif($wordCount < 2){
+            $nameError = "Write at least 2 words";
+        } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $name)){
             $nameError = "Only letters and white space and dash allowed";
             // echo $nameError;
         }else{
@@ -27,7 +31,7 @@
             $emailError = "Email is required";
             // echo $nameError;
         } elseif (!preg_match("/^[a-zA-Z-']*$/", $email)) {
-            $emailError = "Only letters and white space and dash allowed";
+            $emailError = "Enter a valid email address";
             // echo $;
         }else{
             //echo $;
@@ -62,11 +66,12 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $degree = $_POST['degree'];
+        $count = count($degree);
         if (empty($degree)) {
             $degreeError = "Degree is required";
             // echo $nameError;
-        } elseif (empty($degree)) {
-            $degreeError = "Degree error";
+        } elseif ($count<2) {
+            $degreeError = "Select at least 2";
             // echo $;
         }else{
             echo $degree;
@@ -140,7 +145,11 @@
         <!-- Degree -->
         <legend>DEGREE</legend>
         <fieldset>
-            <input type="text" name="degree" placeholder="Enter your Degree" /> <span class="required">i &nbsp;<?php echo $degreeError; ?></span>
+            <input type="checkbox" name="degree[]" value="SSC"/> SSC
+            <input type="checkbox" name="degree[]" value="HSC"/> HSC
+            <input type="checkbox" name="degree[]" value="BSc"/> BSc
+            <input type="checkbox" name="degree[]" value="MSc"/> MSc
+            <span class="required">i &nbsp;<?php echo $degreeError; ?></span>
         </fieldset>
         <!-- Blood Group -->
         <legend>BLOOD GROUP</legend>
