@@ -1,11 +1,55 @@
 <?php
 
-    $nameError = $emailError = $genderError = $bloodGroupError = $dateOfBirthError = $degreeError = "";
+    $nameError = "";
+    $emailError = "";
+    $genderError = "";
+    $bloodGroupError = "";
+    $dateOfBirthError = "";
+    $degreeError = "";
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['name'];
+        if (empty($name) || $name == " ") {
+            $nameError = "Name is required";
+            // echo $nameError;
+        } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+            $nameError = "Only letters and white space and dash allowed";
+            // echo $nameError;
+        }else{
+            echo $name;
+        }
+    }
+
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['email'];
+        if (empty($_POST['email'])) {
+            $nameError = "Email is required";
+            // echo $nameError;
+        } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+            $nameError = "Only letters and white space and dash allowed";
+            // echo $nameError;
+        }else{
+            echo $name;
+        }
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['dateOfBirth'];
+        if (empty($_POST['dateOfBirth'])) {
+            $nameError = "Email is required";
+            // echo $nameError;
+        } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
+            $nameError = "Only letters and white space and dash allowed";
+            // echo $nameError;
+        }else{
+            echo $name;
+        }
+    }
 
 
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -30,7 +74,7 @@
 
 <body>
 
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <!-- Name -->
         <legend>NAME</legend>
         <fieldset>
@@ -44,8 +88,7 @@
         <!-- Date of Birth -->
         <legend>DATE OF BIRTH</legend>
         <fieldset>
-            <input type="date" name="dateOfBirth" placeholder="Enter your Da" />
-            i<span>i<?php echo $emailError; ?></span>
+            <input type="date" name="dateOfBirth" placeholder="Enter your Date of Birth" /> <span>i<?php echo $emailError; ?></span>
         </fieldset>
         <!-- Gender -->
         <legend>GENDER</legend>
@@ -88,22 +131,3 @@
 
 
 
-<?php
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $name = $_POST['name'];
-        if (empty($_POST['name'])) {
-            $nameError = "Name is required";
-            // echo $nameError;
-        } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $name)) {
-            $nameError = "Only letters and white space and dash allowed";
-            // echo $nameError;
-        }else{
-            echo $name;
-        }
-    }
-
-
-
-
-?>
