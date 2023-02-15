@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);  // This line will hide all the given errors in php
+
     $nameError = "";
     $emailError = "";
     $genderError = "";
@@ -13,11 +15,17 @@
         // echo $wordCount;
         if (empty($name)) {
             $nameError = "Name is required";
+            $_POST['name'] = "";
+            $name = "";
             // echo $nameError;
         } elseif($wordCount < 2){
             $nameError = "Write at least 2 words";
+            $_POST['name'] = "";
+            $name = "";
         } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $name)){
             $nameError = "Only letters and white space and dash allowed";
+            $_POST['name'] = "";
+            $name = "";
             // echo $nameError;
         }else{
             //echo $name;
@@ -29,22 +37,29 @@
         $email = $_POST['email'];
         if (empty($email)) {
             $emailError = "Email is required";
+            $_POST['email'] = "";
+            $email = ""; 
             // echo $nameError;
-        } elseif (!preg_match("/^[a-zA-Z-']*$/", $email)) {
-            $emailError = "Enter a valid email address";
-            // echo $;
-        }else{
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailError = "Invalid email format";
+            $email = ""; 
+          }else{
             //echo $;
         }
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dob = $_POST['dateOfBirth'];
+        // echo $dob;
         if (empty($dob)) {
             $dateOfBirthError = "Date of Birth is required";
+            $_POST['dateOfBirth'] = "";
+            $dob = "";
             // echo $nameError;
-        } elseif ($dob > date('d-m-y')) {
+        } elseif ($dob > date('y-m-d')) {
             $dateOfBirthError = "Date of birth can not be in future";
+            // $_POST['dateOfBirth'] = "";
+            $dob = "";
             // echo $dateOfBirthError;
         }else{
             //echo $dob;
@@ -55,39 +70,52 @@
         $gender = $_POST['gender'];
         if (empty($gender)) {
             $genderError = "Gender is required";
+            $_POST['gender'] = "";
+            $gender = "";
             // echo $nameError;
         } elseif (empty($gender)) {
             $genderError = "Gender error";
+            $_POST['gender'] = "";
+            $gender = "";
             // echo $;
         }else{
-            echo $gender;
+            // echo $gender;
         }
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $degree = $_POST['degree'];
-        $count = count($degree);
-        if (empty($degree)) {
-            $degreeError = "Degree is required";
-            // echo $nameError;
-        } elseif ($count<2) {
-            $degreeError = "Select at least 2";
-            // echo $;
+        if(is_countable($degree)){
+            $count = count($degree);
+            // echo $count;
+            if ($count<2) {
+                $degreeError = "Select at least 2 Degrees";
+                $_POST['degree'] = "";
+                $degree = "";
+                // echo $;
+            }else{
+                //echo $degree;
+            }
         }else{
-            echo $degree;
+            $degreeError = "Degree is required";
+            $_POST['degree'] = "";
+            $degree = "";
         }
+        
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $bloodGroup = $_POST['bloodGroup'];
         if (empty($degree)) {
             $bloodGroupError = "Blood Group is required";
+            $bloodGroup = "";
             // echo $nameError;
         } elseif (empty($degree)) {
-            $degreeError = "Blood Group error";
+            $bloodGroupError = "Blood Group error";
+            $bloodGroup = "";
             // echo $;
         }else{
-            echo $degree;
+            // echo $bloodGroupError;
         }
     }
 
@@ -112,9 +140,14 @@
         height: 100%;
         background-color: #f1f1f1;
         padding: 20px;
+        /* border: 1px solid black; */
     }
     .required{
         color:red;
+    }
+    .border{
+        border: 1px solid black;
+        border-collapse: collapse;
     }
     </style>
 </head>
@@ -140,7 +173,10 @@
         <!-- Gender -->
         <legend>GENDER</legend>
         <fieldset>
-            <input type="text" name="gender" placeholder="Enter your Gender" /> <span class="required">i &nbsp;<?php echo $genderError; ?></span>
+            <input type="radio" name="gender" value="Male" /> Male
+            <input type="radio" name="gender" value="Female" /> Female
+            <input type="radio" name="gender" value="Other" /> Other
+            <span class="required">i &nbsp;<?php echo $genderError; ?></span>
         </fieldset>
         <!-- Degree -->
         <legend>DEGREE</legend>
@@ -154,12 +190,43 @@
         <!-- Blood Group -->
         <legend>BLOOD GROUP</legend>
         <fieldset>
-            <input type="text" name="bloodGroup" placeholder="Enter your Blood-group" />
+        <select name="bloodGroup" id="">
+        <option value="None">None</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
             <span class="required">i &nbsp;<?php echo $bloodGroupError; ?></span>
         </fieldset>
         <br>
         <input type="submit" name="submit" value="Submit" />
     </form>
+    <br><br>
+    <div>
+        <table class="output border">
+            <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Degree</th>
+            <th>Blood Group</th>
+            </tr>
+            <tr>
+                <?php echo "<td class= \"border\">".$name."</td>" ;?>
+                <?php echo "<td class= \"border\">".$email."</td>"; ?>
+                <?php echo "<td class= \"border\">".$dob."</td>"; ?>
+                <?php echo "<td class= \"border\">".$gender."</td>"; ?>
+                <?php echo "<td class= \"border\">".implode(" ",$_POST['degree'])."</td>"; ?>
+                <?php echo "<td class= \"border\">".$bloodGroup."</td>"; ?>
+            </tr>
+        </table>
+    </div>
 
 
 </body>
