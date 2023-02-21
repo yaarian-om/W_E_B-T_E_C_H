@@ -142,10 +142,12 @@ error_reporting(0);  // This line will hide all the given errors in php
         padding: 20px;
         /* border: 1px solid black; */
     }
-    .required{
-        color:red;
+
+    .required {
+        color: red;
     }
-    .border{
+
+    .border {
         border: 1px solid black;
         border-collapse: collapse;
     }
@@ -158,17 +160,20 @@ error_reporting(0);  // This line will hide all the given errors in php
         <!-- Name -->
         <legend>NAME</legend>
         <fieldset>
-            <input type="text" name="name" placeholder="Enter your name" /> <span class="required">i &nbsp;<?php echo $nameError; ?></span>
+            <input type="text" name="name" placeholder="Enter your name" /> <span class="required">i
+                &nbsp;<?php echo $nameError; ?></span>
         </fieldset>
         <!-- Email -->
         <legend>EMAIL</legend>
         <fieldset>
-            <input type="text" name="email" placeholder="Enter your email" /> <span class="required">i &nbsp;<?php echo $emailError; ?></span>
+            <input type="text" name="email" placeholder="Enter your email" /> <span class="required">i
+                &nbsp;<?php echo $emailError; ?></span>
         </fieldset>
         <!-- Date of Birth -->
         <legend>DATE OF BIRTH</legend>
         <fieldset>
-            <input type="date" name="dateOfBirth" placeholder="Enter your Date of Birth" /> <span class="required">i &nbsp;<?php echo $dateOfBirthError; ?></span>
+            <input type="date" name="dateOfBirth" placeholder="Enter your Date of Birth" /> <span class="required">i
+                &nbsp;<?php echo $dateOfBirthError; ?></span>
         </fieldset>
         <!-- Gender -->
         <legend>GENDER</legend>
@@ -181,26 +186,26 @@ error_reporting(0);  // This line will hide all the given errors in php
         <!-- Degree -->
         <legend>DEGREE</legend>
         <fieldset>
-            <input type="checkbox" name="degree[]" value="SSC"/> SSC
-            <input type="checkbox" name="degree[]" value="HSC"/> HSC
-            <input type="checkbox" name="degree[]" value="BSc"/> BSc
-            <input type="checkbox" name="degree[]" value="MSc"/> MSc
+            <input type="checkbox" name="degree[]" value="SSC" /> SSC
+            <input type="checkbox" name="degree[]" value="HSC" /> HSC
+            <input type="checkbox" name="degree[]" value="BSc" /> BSc
+            <input type="checkbox" name="degree[]" value="MSc" /> MSc
             <span class="required">i &nbsp;<?php echo $degreeError; ?></span>
         </fieldset>
         <!-- Blood Group -->
         <legend>BLOOD GROUP</legend>
         <fieldset>
-        <select name="bloodGroup" id="">
-        <option value="None">None</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-        </select>
+            <select name="bloodGroup" id="">
+                <option value="None">None</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
             <span class="required">i &nbsp;<?php echo $bloodGroupError; ?></span>
         </fieldset>
         <br>
@@ -210,12 +215,12 @@ error_reporting(0);  // This line will hide all the given errors in php
     <div>
         <table class="output border">
             <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Date of Birth</th>
-            <th>Gender</th>
-            <th>Degree</th>
-            <th>Blood Group</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Degree</th>
+                <th>Blood Group</th>
             </tr>
             <tr>
                 <?php echo "<td class= \"border\">".$name."</td>" ;?>
@@ -232,20 +237,3 @@ error_reporting(0);  // This line will hide all the given errors in php
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
