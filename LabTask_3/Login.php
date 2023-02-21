@@ -6,6 +6,7 @@
     $passwordError = "";
     $username = "";
     $password = "";
+    $everythingOK = FALSE;
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
@@ -14,14 +15,17 @@
             $usernameError = "Write at least 2 Characters";
             $_POST['username'] = "";
             $username = "";
+            $everythingOK = FALSE;
             // echo $nameError;
         } else if(!preg_match("/^[a-zA-Z- _' ]*$/", $username)){
             $usernameError = "Only letters and white space and dash allowed";
             $_POST['username'] = "";
             $username = "";
+            $everythingOK = FALSE;
             // echo $nameError;
         }else{
             //echo $name;
+            $everythingOK = TRUE;
         }
     }
 
@@ -34,16 +38,16 @@
             $passwordError = "Write at least 8 Character";
             $_POST['password'] = "";
             $password = "";
+            $everythingOK = FALSE;
         }else if (!preg_match('/[@#$%]/', $password)) {
             // check if password contains at least one special character
             $passwordError = "Password must contain at least one special character (@, #, $, %).";
             $_POST['password'] = "";
             $password = "";
-        }else if (strlen($password) < 8) {
-            
-        }
-        else{
+            $everythingOK = FALSE;
+        }else{
             //echo $name;
+            $everythingOK = TRUE;
         }
     }
 
@@ -62,7 +66,14 @@
                }
             }
         //}
-        header('Location:ChangePassword.php'); // Original code is now working
+        header('Location:ChangePassword.php'); // Original code is not working
+    }
+
+
+    if($everythingOK){
+        // Check that id and password are correct
+        // if correct, redirect to the home page
+        header('Location:Login.php');
     }
     
 
@@ -84,7 +95,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LabTask 3</title>
+    <title>Login</title>
 
     <style>
     body {
