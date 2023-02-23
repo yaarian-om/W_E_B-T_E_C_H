@@ -2,7 +2,9 @@
 session_start();
 // error_reporting(0);  // This line will hide all the given errors in php
 
-
+    $everythingOK = FALSE;
+    $usernameError = "";
+    $passwordError = "";
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
@@ -78,10 +80,11 @@ session_start();
             {  
                 if($row["username"] === $username){
                     //
+                   // header('Location:UploadProfilePhoto.php');
                 }
             } 
         }
-        header('Location:Login.php');
+        //header('Location:Login.php');
     }
     
 
