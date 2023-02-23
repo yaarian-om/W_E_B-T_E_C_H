@@ -34,10 +34,11 @@
         // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $target_file)) {
-                $fileName = htmlspecialchars( basename( $_FILES["profilePic"]["name"]));
-                echo "The file ". htmlspecialchars( basename( $_FILES["profilePic"]["name"])). " has been uploaded.";
+                $fileName = htmlspecialchars(basename($_FILES["profilePic"]["name"]));
+                $target_file = "" . basename($_FILES["profilePic"]["name"]);
+                $fileError =  "The file ". htmlspecialchars( basename( $_FILES["profilePic"]["name"])). " has been uploaded.";
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $fileError = "Sorry, there was an error uploading your file.";
             }
         }
 
@@ -98,11 +99,12 @@
 
             <legend>Profile Picture</legend>
             <fieldset>
-                <img src="<?php if($_SERVER['REQUEST_METHOD'] === 'POST'){echo "uploads/$filename";}else{echo "uploads/temp.png";} ?>"
+                <img src="<?php if($_SERVER['REQUEST_METHOD'] === 'POST'){echo "uploads/$fileName";}else{echo "uploads/temp.png";} ?>"
                     alt="Profile Picture" width="200px" height="200px"> <br>
                 <input type="file" name="profilePic" id="profilePic" style="margin: 5px">
                 <hr>
                 <input type="submit" name="submit" value="Submit" style="margin: 15px" /> <br>
+                <?php echo $fileError;?>
             </fieldset>
 
 
