@@ -1,3 +1,5 @@
+<!-- Working Successfully -->
+
 <?php
 session_start();
 // error_reporting(0);  // This line will hide all the given errors in php
@@ -80,7 +82,7 @@ session_start();
             {  
                 if($row["username"] === $username){
                     //
-                   // header('Location:UploadProfilePhoto.php');
+                    header('Location:UploadProfilePhoto.php');
                 }
             } 
         }
