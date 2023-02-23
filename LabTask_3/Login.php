@@ -1,12 +1,8 @@
 <?php
-
+session_start();
 // error_reporting(0);  // This line will hide all the given errors in php
 
-    $usernameError = "";
-    $passwordError = "";
-    $username = "";
-    $password = "";
-    $everythingOK = FALSE;
+
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
@@ -25,6 +21,7 @@
             // echo $nameError;
         }else{
             //echo $name;
+
             $everythingOK = TRUE;
         }
     }
@@ -73,6 +70,17 @@
     if($everythingOK){
         // Check that id and password are correct
         // if correct, redirect to the home page
+
+        $data = file_get_contents("data.json");  
+        $data = json_decode($data, true);
+        if (isset($data)) {
+            foreach($data as $row)  
+            {  
+                if($row["username"] === $username){
+                    //
+                }
+            } 
+        }
         header('Location:Login.php');
     }
     
