@@ -91,28 +91,85 @@
     form {
         display: inline-block;
     }
+
+
+    .container {
+        display: flex;
+        height: 400px;
+        border: 1px solid black;
+    }
+
+    .left {
+        width: 30%;
+        border-right: 1px solid black;
+    }
+
+    .right {
+        width: 70%;
+    }
+
+    ul {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 10px;
+        /* add some spacing between items */
+    }
     </style>
     </head>
 
     <body>
 
-        <p>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+        <?php include 'Header2.php';?>
 
-            <legend>Profile Picture</legend>
-            <fieldset>
-                <img src="<?php if($_SERVER['REQUEST_METHOD'] === 'POST'){echo "uploads/$fileName";}else{echo "uploads/temp.png";} ?>"
-                    alt="Profile Picture" width="200px" height="200px"> <br>
-                <input type="file" name="profilePic" id="profilePic" style="margin: 5px">
+
+        <div class="container">
+            <div class="left">
+                <p>
+                <h3>Account</h3>
                 <hr>
-                <input type="submit" name="submit" value="Submit" style="margin: 15px" /> <br>
-                <?php echo $fileError;?>
-            </fieldset>
+                <ul>
+                    <li><a href="Dashboard.php">Dashboard</a></li>
+                    <li><a href="ViewProfile.php">View Profile</a></li>
+                    <li><a href="EditProfile.php">Edit Profile</a></li>
+                    <li><a href="UploadProfilePhoto.php">Change Profile Picture</a></li>
+                    <li><a href="ChangePassword.php">Change Password</a></li>
+                    <li><a href="Logout.php">Logout</a></li>
+                </ul>
+
+                </p>
 
 
-        </form>
-        </p>
+            </div>
+            <div class="right">
+                <p>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
 
+                    <legend>Profile Picture</legend>
+                    <fieldset>
+                        <img src="<?php if($_SERVER['REQUEST_METHOD'] === 'POST'){echo "uploads/$fileName";}else{echo "uploads/temp.png";} ?>"
+                            alt="Profile Picture" width="200px" height="200px"> <br>
+                        <input type="file" name="profilePic" id="profilePic" style="margin: 5px">
+                        <hr>
+                        <input type="submit" name="submit" value="Submit" style="margin: 15px" /> <br>
+                        <?php echo $fileError;?>
+                    </fieldset>
+
+
+                </form>
+                </p>
+            </div>
+        </div>
+
+
+        <?php include 'Footer.php';?>
     </body>
 </body>
 

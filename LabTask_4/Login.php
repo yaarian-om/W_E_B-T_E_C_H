@@ -87,9 +87,10 @@ session_start();
                 foreach($data as $row)  
                 {  
                     if($row["username"] === $username && $row["password"] === $password){
+                        $_SESSION["loginUser_Name"] = $row["username"];
                         $_SESSION['username'] = $username;
                         $_SESSION['password'] = $password;
-                        header('Location:UploadProfilePhoto.php');
+                        header('Location:Homepage.php');
                     }
                 } 
             }

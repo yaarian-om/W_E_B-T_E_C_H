@@ -122,34 +122,95 @@
     form {
         display: inline-block;
     }
+
+
+    .container {
+        display: flex;
+        height: 400px;
+        border: 1px solid black;
+    }
+
+    .left {
+        width: 30%;
+        border-right: 1px solid black;
+    }
+
+    .right {
+        width: 70%;
+    }
+
+    ul {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        display: inline-block;
+        margin-right: 10px;
+        /* add some spacing between items */
+    }
     </style>
     </head>
 
     <body>
 
-        <p>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <?php include 'Header2.php';?>
 
-            <legend>Change Password</legend>
-            <fieldset>
-                <label for="currentPass">Current Password</label>
-                <input type="password" name="currentPass" id="currentPass" style="margin: 5px">
-                <span class="required">&nbsp; i &nbsp; <?php echo $currPasswordError; ?></span>
-                <br>
-                <label for="newPass" style="color: green">New Password</label>
-                <input type="password" name="newPass" id="newPass" style="margin: 5px">
-                <span class="required">&nbsp; i &nbsp; <?php echo $newPasswordError; ?> </span> <br>
-                <label for="reTypeNewPass" style="color: red">Retype New Password</label>
-                <input type="password" name="reTypeNewPass" id="reTypeNewPass" style="margin: 5px">
-                <span class="required">&nbsp; i &nbsp;<?php echo $reTypePasswordError; ?> </span>
-                <br>
+
+        <div class="container">
+            <div class="left">
+                <p>
+                <h3>Account</h3>
                 <hr>
-                <input type="submit" name="submit" value="Submit" style="margin: 15px" /> <br>
-            </fieldset>
+                <ul>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">View Profile</a></li>
+                    <li><a href="">Edit Profile</a></li>
+                    <li><a href="UploadProfilePhoto.php">Change Profile Picture</a></li>
+                    <li><a href="ChangePassword.php">Change Password</a></li>
+                    <li><a href="Logout.php">Logout</a></li>
+                </ul>
+
+                </p>
 
 
-        </form>
-        </p>
+            </div>
+            <div class="right">
+                <p>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+
+                    <legend>Change Password</legend>
+                    <fieldset>
+                        <label for="currentPass">Current Password</label>
+                        <input type="password" name="currentPass" id="currentPass" style="margin: 5px">
+                        <span class="required">&nbsp; i &nbsp; <?php echo $currPasswordError; ?></span>
+                        <br>
+                        <label for="newPass" style="color: green">New Password</label>
+                        <input type="password" name="newPass" id="newPass" style="margin: 5px">
+                        <span class="required">&nbsp; i &nbsp; <?php echo $newPasswordError; ?> </span> <br>
+                        <label for="reTypeNewPass" style="color: red">Retype New Password</label>
+                        <input type="password" name="reTypeNewPass" id="reTypeNewPass" style="margin: 5px">
+                        <span class="required">&nbsp; i &nbsp;<?php echo $reTypePasswordError; ?> </span>
+                        <br>
+                        <hr>
+                        <input type="submit" name="submit" value="Submit" style="margin: 15px" /> <br>
+                    </fieldset>
+
+
+                </form>
+                </p>
+
+            </div>
+        </div>
+
+
+
+        <?php include 'Footer.php';?>
+
 
     </body>
 </body>

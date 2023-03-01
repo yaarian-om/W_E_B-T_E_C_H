@@ -18,7 +18,7 @@
 <body>
     <hr>
     <footer>
-        Copyright&copy; <?php echo date("Y"); ?>
+        Copyright &copy; <?php echo date("Y"); ?>
     </footer>
 </body>
 
