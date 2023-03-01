@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title></title>
     <style>
-      nav {
+    nav {
         float: right;
-      }
+    }
 
-      ul {
+    ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
-      }
+    }
 
-      li {
+    li {
         display: inline-block;
         margin-right: 10px;
-      }
-
+    }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="Login.php">Login</a></li>
-          <li><a href="#">Registration</a></li>
-        </ul>
-      </nav>
+        <nav>
+            <ul>
+                <li><a href="public_Home.php">Home</a></li>
+                <li><a href="Login.php">Login</a></li>
+                <li><a href="Registration.php">Registration</a></li>
+            </ul>
+        </nav>
     </header>
     <br>
     <hr>
-  </body>
+</body>
+
 </html>
